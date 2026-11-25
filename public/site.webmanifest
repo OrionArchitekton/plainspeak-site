@@ -3,8 +3,8 @@
   "short_name": "Plainspeak",
   "start_url": "/works/plainspeak/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#050C24",
+  "theme_color": "#050C24",
   "icons": [
     {
       "src": "/works/plainspeak/android-chrome-192x192.png",

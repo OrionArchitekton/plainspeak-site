@@ -1,21 +1,9 @@
-import { ProductData } from './types';
+import type { ProductData } from '../../types';
 
 const GITHUB = 'https://github.com/OrionArchitekton/plainspeak';
 const VIDEO = 'https://youtu.be/EbHJ4gQpNS8';
 const LIVE = 'https://plainspeak-nine.vercel.app';
 
-/**
- * Single source of truth for the Plainspeak microsite.
- *
- * All claims are GROUNDED in the real project repo (README.md, specs/,
- * lib/explain.ts, lib/explain.test.ts, app/api/explain/route.ts) as of the
- * FutureAI Global Hackathon 2026 submission. Plainspeak was submitted; it holds
- * no award, so no placement is stated here.
- *
- * The demo panel below quotes the REAL frozen Claude response shipped in
- * lib/demo-fixture.ts (a claude-sonnet-4-6, temperature 0 reply to the sample
- * lease, captured once and frozen so the recorded walkthrough is stable).
- */
 export const PRODUCT_DATA: ProductData = {
   name: 'Plainspeak',
   tagline: 'AI that reads the fine print for you.',
@@ -74,7 +62,6 @@ export const PRODUCT_DATA: ProductData = {
     ],
   },
 
-  // Operative surfaces verified against package.json scripts, lib/, and app/.
   commands: [
     {
       name: 'pnpm dev',
@@ -99,7 +86,7 @@ export const PRODUCT_DATA: ProductData = {
   ],
 
   demo: {
-    heading: 'Demo',
+    heading: 'Frozen Claude Dossier Sample',
     intro:
       'A real, frozen Claude response to a sample lease (claude-sonnet-4-6, temperature 0), shipped as the recorded walkthrough. Paste a lease, say you are the tenant, and the deposit trap surfaces first.',
     lines: [
@@ -160,3 +147,26 @@ export const PRODUCT_DATA: ProductData = {
   footerNote:
     'MIT licensed. Built by Dan Mercede for the FutureAI Global Hackathon 2026. Not legal, medical, or financial advice.',
 };
+
+export const PROOF_LEDGER_METRICS = [
+  {
+    label: 'Core Unit Tests',
+    value: '11 / 11',
+    detail: 'Pure Vitest checks in lib/explain.test.ts with zero API key or network.',
+  },
+  {
+    label: 'Clause Triage Tiers',
+    value: 'High / Med / Low',
+    detail: 'Ranks deposit traps and auto-renewals ahead of routine boilerplate.',
+  },
+  {
+    label: 'Document Persistence',
+    value: '0 Bytes',
+    detail: 'Processed server-side per request, returned, and immediately discarded.',
+  },
+  {
+    label: 'JSON Output Contract',
+    value: '1 Structured Call',
+    detail: 'Defensive parser recovers fenced JSON and clamps invalid severity values.',
+  },
+];

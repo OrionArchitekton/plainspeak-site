@@ -1,0 +1,186 @@
+---
+import '../styles/tokens.css';
+import { PRODUCT_DATA } from '../data/product';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Plainspeak: AI that reads the fine print for you',
+  description = PRODUCT_DATA.metaDescription,
+} = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareSourceCode',
+      '@id': 'https://www.danmercede.com/works/plainspeak/#software',
+      name: 'Plainspeak',
+      description:
+        'Paste any dense document and get it in plain words at a chosen reading level, the specific clauses that affect you ranked high, medium, or low, and the exact questions to ask before you agree. A single structured Claude call with a strict JSON output contract, a not-legal-advice guardrail, and a defensive parser.',
+      url: 'https://www.danmercede.com/works/plainspeak/',
+      codeRepository: 'https://github.com/OrionArchitekton/plainspeak',
+      programmingLanguage: 'TypeScript',
+      runtimePlatform: 'Node.js',
+      license: 'https://opensource.org/licenses/MIT',
+      author: { '@id': 'https://www.danmercede.com/#person' },
+      maintainer: { '@id': 'https://www.danmercede.com/#person' },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': 'https://www.danmercede.com/works/plainspeak/#application',
+      name: 'Plainspeak',
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'Web, Node.js',
+      description:
+        'Paste a lease, a medical letter, a terms of service, or a government form and optionally say who you are. Plainspeak returns a plain-language explanation, the clauses that affect you ranked by severity, and the questions to ask before you sign. Not legal, medical, or financial advice.',
+      url: 'https://www.danmercede.com/works/plainspeak/',
+      isAccessibleForFree: true,
+      license: 'https://opensource.org/licenses/MIT',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      author: { '@id': 'https://www.danmercede.com/#person' },
+      publisher: { '@id': 'https://www.danmercede.com/#person' },
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://www.danmercede.com/#person',
+      name: 'Dan Mercede',
+      url: 'https://www.danmercede.com',
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050C24" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={PRODUCT_DATA.canonical} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Plainspeak" />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Paste a lease, a medical letter, or a terms of service and get it in plain words, the clauses that affect you ranked by severity, and the questions to ask before you sign. FutureAI Global Hackathon 2026."
+    />
+    <meta property="og:url" content={PRODUCT_DATA.canonical} />
+    <meta property="og:image" content="https://www.danmercede.com/works/plainspeak/og-card.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Plainspeak: AI that reads the fine print for you. FutureAI Global Hackathon 2026."
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@danmercede" />
+    <meta name="twitter:creator" content="@danmercede" />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content="Plain words, the clauses that affect you ranked by severity, and the questions to ask before you sign. FutureAI Global Hackathon 2026."
+    />
+    <meta name="twitter:image" content="https://www.danmercede.com/works/plainspeak/og-card.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Plainspeak: AI that reads the fine print for you. FutureAI Global Hackathon 2026."
+    />
+
+    <!-- Brand favicons -->
+    <link rel="icon" href="/works/plainspeak/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/works/plainspeak/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/works/plainspeak/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/works/plainspeak/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/works/plainspeak/apple-touch-icon.png" />
+    <link rel="manifest" href="/works/plainspeak/site.webmanifest" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+
+  <body class="min-h-screen bg-[#050C24] text-[#F8FAFC] antialiased selection:bg-[#E68249] selection:text-[#020B29]">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-[#E68249] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#020B29] focus:no-underline"
+    >
+      Skip to main content
+    </a>
+
+    <header class="border-b border-[#334155] bg-[#050C24]">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4 md:px-8">
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href="https://www.danmercede.com/works"
+            class="inline-flex min-h-[44px] items-center font-mono text-xs uppercase tracking-[0.16em] text-[#F0975A] hover:text-[#FFC08B] hover:underline"
+          >
+            danmercede.com / works
+          </a>
+          <span class="hidden text-[#64748B] sm:inline" aria-hidden="true">/</span>
+          <span class="font-mono text-xs uppercase tracking-[0.14em] text-[#94A3B8]">
+            Benchmark Dossier
+          </span>
+        </div>
+
+        <nav aria-label="Dossier navigation" class="flex flex-wrap items-center gap-2">
+          <a
+            href="#proof-ledger"
+            class="inline-flex min-h-[44px] items-center rounded px-3 font-mono text-xs text-[#CBD5E1] transition-colors hover:bg-[#0A1538] hover:text-[#FFC08B]"
+          >
+            Proof Ledger
+          </a>
+          <a
+            href="#dossier-sample"
+            class="inline-flex min-h-[44px] items-center rounded px-3 font-mono text-xs text-[#CBD5E1] transition-colors hover:bg-[#0A1538] hover:text-[#FFC08B]"
+          >
+            Live Sample
+          </a>
+          <a
+            href="#quickstart"
+            class="inline-flex min-h-[44px] items-center rounded px-3 font-mono text-xs text-[#CBD5E1] transition-colors hover:bg-[#0A1538] hover:text-[#FFC08B]"
+          >
+            Quickstart
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1" class="mx-auto max-w-6xl space-y-14 px-5 py-10 md:px-8">
+      <slot />
+    </main>
+
+    <footer class="mt-16 border-t border-[#334155] bg-[#050C24]">
+      <div class="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-8 font-mono text-xs text-[#94A3B8] md:px-8">
+        <ul class="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-6">
+          {PRODUCT_DATA.links.map((link) => (
+            <li>
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex min-h-[44px] items-center text-[#E2E8F0] underline decoration-[#64748B] underline-offset-4 transition-colors hover:text-[#FFC08B] hover:decoration-[#F0975A]"
+              >
+                {link.label}
+                <span class="sr-only"> (opens in a new tab)</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div class="flex flex-col justify-between gap-2 sm:flex-row">
+          <p>{PRODUCT_DATA.footerNote}</p>
+          <p>&copy; 2026 Dan Mercede</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
