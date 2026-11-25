@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DossierInspector from '../components/DossierInspector';
+import { PRODUCT_DATA, PROOF_LEDGER_METRICS } from '../data/product';
+---
+
+<BaseLayout>
+  <!-- HeroSplit: 7-col thesis + CTA left, 5-col dossier integrity telemetry right -->
+  <section aria-labelledby="hero-title" class="grid grid-cols-1 gap-8 border-b border-[#334155] pb-10 lg:grid-cols-12 lg:items-start">
+    <div class="lg:col-span-7">
+      <p class="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-[#F0975A]">
+        OPEN SOURCE · MIT · FUTUREAI GLOBAL HACKATHON 2026
+      </p>
+      <h1
+        id="hero-title"
+        class="font-display text-4xl font-bold leading-tight tracking-tight text-[#F8FAFC] sm:text-5xl"
+      >
+        {PRODUCT_DATA.name}
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[#E2E8F0] sm:text-xl">
+        {PRODUCT_DATA.tagline}
+      </p>
+      <p class="mt-3 font-mono text-xs leading-relaxed text-[#94A3B8]">
+        {PRODUCT_DATA.credibility}
+      </p>
+
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+        <a
+          href={PRODUCT_DATA.cta.primaryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-[#E68249] px-5 py-2.5 text-sm font-semibold text-[#020B29] transition-colors hover:bg-[#F0975A]"
+        >
+          {PRODUCT_DATA.cta.primaryLabel}
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <a
+          href={PRODUCT_DATA.cta.secondaryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-[44px] items-center justify-center rounded-md border border-[#64748B] bg-[#0A1538] px-5 py-2.5 text-sm font-medium text-[#F8FAFC] transition-colors hover:border-[#F0975A] hover:text-[#FFC08B]"
+        >
+          {PRODUCT_DATA.cta.secondaryLabel}
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      </div>
+    </div>
+
+    <aside
+      aria-label="Dossier specification integrity"
+      class="rounded-lg border border-[#334155] bg-[#0A1538] p-5 lg:col-span-5"
+    >
+      <p class="font-mono text-xs uppercase tracking-[0.14em] text-[#F0975A]">
+        Dossier Integrity Spec
+      </p>
+      <dl class="mt-4 space-y-3 font-mono text-xs">
+        <div class="flex items-baseline justify-between gap-4 border-b border-[#1E293B] pb-2.5">
+          <dt class="text-[#94A3B8]">Runtime Stack</dt>
+          <dd class="text-right font-semibold text-[#F8FAFC]">Next.js 15 + Claude Sonnet 4.6</dd>
+        </div>
+        <div class="flex items-baseline justify-between gap-4 border-b border-[#1E293B] pb-2.5">
+          <dt class="text-[#94A3B8]">Parsing Seam</dt>
+          <dd class="text-right font-semibold text-[#F8FAFC]">lib/explain.ts (defensive)</dd>
+        </div>
+        <div class="flex items-baseline justify-between gap-4 border-b border-[#1E293B] pb-2.5">
+          <dt class="text-[#94A3B8]">Unit Suite</dt>
+          <dd class="text-right font-semibold text-[#4ADE80]">11 / 11 passing (no key)</dd>
+        </div>
+        <div class="flex items-baseline justify-between gap-4">
+          <dt class="text-[#94A3B8]">Guardrail</dt>
+          <dd class="text-right font-semibold text-[#F0975A]">Not legal, medical, or financial advice</dd>
+        </div>
+      </dl>
+    </aside>
+  </section>
+
+  <!-- Proof Ledger Cards (0 KB JS) -->
+  <section id="proof-ledger" aria-labelledby="heading-ledger">
+    <div class="mb-5 border-b border-[#334155] pb-3">
+      <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#F0975A]">
+        Dossier 01 · Proof Ledger
+      </p>
+      <h2 id="heading-ledger" class="mt-1 font-display text-2xl font-bold text-[#F8FAFC] sm:text-3xl">
+        Verified architecture properties
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {PROOF_LEDGER_METRICS.map((item) => (
+        <div class="rounded-lg border border-[#334155] bg-[#0A1538] p-5">
+          <p class="font-mono text-xs uppercase tracking-wider text-[#94A3B8]">{item.label}</p>
+          <p class="mt-2 font-display text-2xl font-bold text-[#F0975A]">{item.value}</p>
+          <p class="mt-2 text-xs leading-relaxed text-[#CBD5E1]">{item.detail}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Interactive Frozen Claude Sample Island -->
+  <section id="dossier-sample" aria-labelledby="heading-sample" class="space-y-4">
+    <div class="border-b border-[#334155] pb-3">
+      <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#F0975A]">
+        Dossier 02 · Recorded Sample
+      </p>
+      <h2 id="heading-sample" class="mt-1 font-display text-2xl font-bold text-[#F8FAFC] sm:text-3xl">
+        {PRODUCT_DATA.demo.heading}
+      </h2>
+    </div>
+    <p class="max-w-3xl text-sm leading-relaxed text-[#CBD5E1]">{PRODUCT_DATA.demo.intro}</p>
+    <DossierInspector client:idle />
+  </section>
+
+  <!-- Problem & What It Does (0 KB JS) -->
+  <section aria-labelledby="heading-problem" class="grid grid-cols-1 gap-6 lg:grid-cols-12">
+    <div class="lg:col-span-6">
+      <div class="mb-4 border-b border-[#334155] pb-3">
+        <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#F0975A]">
+          Dossier 03 · Context
+        </p>
+        <h2 id="heading-problem" class="mt-1 font-display text-2xl font-bold text-[#F8FAFC]">
+          {PRODUCT_DATA.problem.heading}
+        </h2>
+      </div>
+      <p class="text-base leading-relaxed text-[#E2E8F0]">{PRODUCT_DATA.problem.body}</p>
+    </div>
+
+    <div class="rounded-lg border border-[#334155] bg-[#0A1538] p-6 lg:col-span-6">
+      <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#F0975A]">
+        {PRODUCT_DATA.whatItDoes.heading}
+      </p>
+      <p class="mt-3 text-base font-medium leading-relaxed text-[#F8FAFC]">
+        {PRODUCT_DATA.whatItDoes.body}
+      </p>
+    </div>
+  </section>
+
+  <!-- Quickstart & Command Surface Ledger (0 KB JS) -->
+  <section id="quickstart" aria-labelledby="heading-quickstart" class="space-y-6">
+    <div class="border-b border-[#334155] pb-3">
+      <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#F0975A]">
+        Dossier 04 · Local Execution
+      </p>
+      <h2 id="heading-quickstart" class="mt-1 font-display text-2xl font-bold text-[#F8FAFC] sm:text-3xl">
+        {PRODUCT_DATA.quickstart.heading}
+      </h2>
+    </div>
+    <p class="max-w-3xl text-sm leading-relaxed text-[#CBD5E1]">{PRODUCT_DATA.quickstart.intro}</p>
+
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      {PRODUCT_DATA.quickstart.blocks.map((block) => (
+        <div class="rounded-lg border border-[#334155] bg-[#0A1538] p-5">
+          <div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+            <span class="text-sm font-semibold text-[#F8FAFC]">{block.title}</span>
+            {block.note && <span class="font-mono text-xs text-[#94A3B8]">{block.note}</span>}
+          </div>
+          <pre
+            tabindex="0"
+            class="overflow-x-auto rounded-md border border-[#334155] bg-[#050C24] p-4 font-mono text-[13px] leading-relaxed text-[#F8FAFC]"
+          ><code>{block.command}</code></pre>
+        </div>
+      ))}
+    </div>
+
+    <div class="rounded-lg border border-[#334155] bg-[#0A1538] p-5">
+      <h3 class="font-display text-xl font-bold text-[#F8FAFC]">Command Surface</h3>
+      <dl class="mt-4 divide-y divide-[#1E293B]">
+        {PRODUCT_DATA.commands.map((cmd) => (
+          <div class="flex flex-col gap-2 py-3 sm:flex-row sm:items-baseline sm:gap-6">
+            <dt class="shrink-0 font-mono text-sm font-semibold text-[#F0975A] sm:w-40">
+              {cmd.name}
+            </dt>
+            <dd class="text-sm leading-relaxed text-[#E2E8F0]">{cmd.description}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- Differentiators (0 KB JS) -->
+  <section aria-labelledby="heading-differentiators" class="space-y-5">
+    <div class="border-b border-[#334155] pb-3">
+      <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#F0975A]">
+        Dossier 05 · Design Rationale
+      </p>
+      <h2 id="heading-differentiators" class="mt-1 font-display text-2xl font-bold text-[#F8FAFC] sm:text-3xl">
+        {PRODUCT_DATA.differentiators.heading}
+      </h2>
+    </div>
+    <div class="grid gap-5 sm:grid-cols-2">
+      {PRODUCT_DATA.differentiators.points.map((point) => (
+        <div class="rounded-lg border border-[#334155] bg-[#0A1538] p-5">
+          <h3 class="font-display text-lg font-bold text-[#F8FAFC]">{point.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-[#CBD5E1]">{point.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
